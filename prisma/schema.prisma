@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String @id @unique
+  username  String @unique
+  image_url String @default("")
+
+  auth_session Session[]
+  auth_key     Key[]
+  tweets       Tweet[]
+  followed_by  Follows[] @relation("following")
+  following    Follows[] @relation("follower")
+}
+
+model Session {
+  id             String @id @unique
+  user_id        String
+  active_expires BigInt
+  idle_expires   BigInt
+  user           User   @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+model Key {
+  id              String  @id @unique
+  hashed_password String?
+  user_id         String
+  user            User    @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+model Tweet {
+  id   String @id @default(cuid())
+  body String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user    User   @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user_id String
+}
+
+model Follows {
+  follower     User   @relation("follower", fields: [follower_id], references: [id])
+  follower_id  String
+  following    User   @relation("following", fields: [following_id], references: [id])
+  following_id String
+
+  @@id([follower_id, following_id])
+}
