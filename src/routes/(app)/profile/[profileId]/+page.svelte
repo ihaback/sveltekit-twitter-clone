@@ -9,7 +9,7 @@
 	export let form: ActionData;
 </script>
 
-<AppShell user_id={data?.profile_user?.id}>
+<AppShell user_id={data?.user_id}>
 	<div slot="main" class="-mt-6">
 		<ProfileForm profile_user={data?.profile_user} is_following={data.is_following} {form} />
 		<TweetList tweets={data?.tweets ?? []} is_profile />
