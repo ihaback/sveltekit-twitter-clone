@@ -35,7 +35,13 @@ export const actions: Actions = {
 			}
 		}
 
-		await deleteTweet({ id: params.tweetId, user_id: session.user.userId });
+		try {
+			await deleteTweet({ id: params.tweetId, user_id: session.user.userId });
+		} catch (error) {
+			return fail(400, {
+				tweetErrorMessage: 'Could not delete tweet'
+			});
+		}
 
 		throw redirect(302, '/tweets');
 	},

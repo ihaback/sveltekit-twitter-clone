@@ -37,7 +37,13 @@ export const actions: Actions = {
 			}
 		}
 
-		await deleteTweet({ id: params.tweetId, user_id: session.user.userId });
+		try {
+			await deleteTweet({ id: params.tweetId, user_id: session.user.userId });
+		} catch (error) {
+			return fail(500, {
+				tweetErrorMessage: 'Could not delete tweet'
+			});
+		}
 
 		throw redirect(302, `/profile/${session.user.userId}`);
 	},
@@ -52,15 +58,27 @@ export const actions: Actions = {
 		const is_following = following.some((x) => x.follower_id === session.user.userId);
 
 		if (is_following) {
-			await deleteFollow({
-				following_id: profile_user?.id as string,
-				follower_id: session.user.userId
-			});
+			try {
+				await deleteFollow({
+					following_id: profile_user?.id as string,
+					follower_id: session.user.userId
+				});
+			} catch (error) {
+				return fail(500, {
+					message: 'Could not unfollow'
+				});
+			}
 		} else {
-			await createFollow({
-				following_id: profile_user?.id as string,
-				follower_id: session.user.userId
-			});
+			try {
+				await createFollow({
+					following_id: profile_user?.id as string,
+					follower_id: session.user.userId
+				});
+			} catch (error) {
+				return fail(500, {
+					message: 'Could not follow'
+				});
+			}
 		}
 	}
 };

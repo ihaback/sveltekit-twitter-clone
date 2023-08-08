@@ -1,6 +1,6 @@
 import { createFollow, deleteFollow, getFollowers } from '$lib/server/models/follow.server';
 import { getUserById } from '$lib/server/models/user.server';
-import { redirect, type Actions } from '@sveltejs/kit';
+import { redirect, type Actions, fail } from '@sveltejs/kit';
 
 export const actions: Actions = {
 	follow: async ({ locals, params }) => {
@@ -14,15 +14,27 @@ export const actions: Actions = {
 		const is_following = following.some((x) => x.follower_id === session.user.userId);
 
 		if (is_following) {
-			await deleteFollow({
-				following_id: profile_user?.id as string,
-				follower_id: session.user.userId
-			});
+			try {
+				await deleteFollow({
+					following_id: profile_user?.id as string,
+					follower_id: session.user.userId
+				});
+			} catch (error) {
+				return fail(500, {
+					message: 'Could not unfollow'
+				});
+			}
 		} else {
-			await createFollow({
-				following_id: profile_user?.id as string,
-				follower_id: session.user.userId
-			});
+			try {
+				await createFollow({
+					following_id: profile_user?.id as string,
+					follower_id: session.user.userId
+				});
+			} catch (error) {
+				return fail(500, {
+					message: 'Could not follow'
+				});
+			}
 		}
 	}
 };
