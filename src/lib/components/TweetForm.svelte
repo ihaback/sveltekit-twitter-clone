@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { ActionData } from '../../routes/(app)/tweets/./$types';
-	let form: ActionData;
+	export let form: { message?: string; tweetErrorMessage?: string } | null;
 	export let loading = false;
 </script>
 

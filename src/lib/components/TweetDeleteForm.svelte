@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { ActionData } from '../../routes/(app)/tweets/[tweetId]/./$types';
 
 	export let tweet: { user: { username: string }; body: string; user_id: string } | null;
 	export let user_id: string;
-	let form: ActionData;
+	export let form: { tweetErrorMessage?: string; message?: string } | null;
 </script>
 
 <div>

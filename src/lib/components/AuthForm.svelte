@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	export let type: 'login' | 'signup';
-	import type { ActionData } from '../../routes/(auth)/login/./$types';
-	let form: ActionData;
+	export let form: { message: string } | null;
 	export let loading = false;
 </script>
 

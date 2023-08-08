@@ -4,7 +4,7 @@
 
 	export let profile_user: User | null;
 	export let is_following: boolean;
-	let form: { message: string } | null;
+	export let form: { message?: string; tweetErrorMessage: string } | null;
 
 	export let loading = false;
 </script>
