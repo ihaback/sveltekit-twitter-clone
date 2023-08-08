@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	export let type: 'login' | 'signup';
 	import type { ActionData } from '../../routes/(auth)/login/./$types';
-	export let form: ActionData;
+	let form: ActionData;
 	export let loading = false;
 </script>
 

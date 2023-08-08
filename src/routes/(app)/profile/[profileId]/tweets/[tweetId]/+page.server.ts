@@ -21,7 +21,7 @@ export const actions: Actions = {
 
 		if (!params?.tweetId) {
 			return fail(400, {
-				message: 'Could not delete tweet'
+				tweetErrorMessage: 'Could not delete tweet'
 			});
 		}
 
@@ -32,7 +32,7 @@ export const actions: Actions = {
 		if (!is_owner) {
 			if (!params?.tweetId) {
 				return fail(400, {
-					message: 'Could not delete tweet'
+					tweetErrorMessage: 'Could not delete tweet'
 				});
 			}
 		}
