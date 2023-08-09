@@ -20,10 +20,10 @@
 					loading = false;
 				};
 			}}
-			action="?/delete"
+			action="?/remove"
 		>
 			<button
-				name="delete"
+				name="remove"
 				type="submit"
 				class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400 disabled:bg-blue-200"
 			>

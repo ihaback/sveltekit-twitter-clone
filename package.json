@@ -15,7 +15,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"license": "MIT",
-  	"author": "ihaback <ihaback@fastmail.com> (https://ihaback.vercel.app/)",
+	"author": "ihaback <ihaback@fastmail.com> (https://ihaback.vercel.app/)",
 	"dependencies": {
 		"@lucia-auth/adapter-prisma": "^3.0.0",
 		"@lucia-auth/adapter-sqlite": "latest",

@@ -9,7 +9,7 @@
 	<h1 class="text-3xl font-bold">Tweets</h1>
 	<p>{username}</p>
 	<form
-		action="../../../?/logout"
+		action="?/logout"
 		method="post"
 		use:enhance={() => {
 			loading = true;

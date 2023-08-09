@@ -1,3 +1,4 @@
+import { logout } from '$lib/actions';
 import { createFollow, deleteFollow, getFollowers } from '$lib/server/models/follow.server';
 import { getUserById } from '$lib/server/models/user.server';
 import { redirect, type Actions, fail } from '@sveltejs/kit';
@@ -36,5 +37,6 @@ export const actions: Actions = {
 				});
 			}
 		}
-	}
+	},
+	logout
 };
