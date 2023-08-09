@@ -6,7 +6,7 @@ import { getFollows } from '$lib/server/models/follow.server';
 
 export const load: LayoutServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
-	if (!session) throw redirect(302, '../?/logout');
+	if (!session) throw redirect(302, '/login');
 
 	const follows = await getFollows({ follower_id: session.user.userId });
 

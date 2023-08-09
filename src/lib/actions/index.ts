@@ -4,7 +4,7 @@ import { fail, redirect } from '@sveltejs/kit';
 
 export async function create({ request, locals }: { request: Request; locals: App.Locals }) {
 	const session = await locals.auth.validate();
-	if (!session) throw redirect(302, '../?/logout');
+	if (!session) throw redirect(302, '/login');
 
 	const form_data = await request.formData();
 	const body = form_data.get('body');

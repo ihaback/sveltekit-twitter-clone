@@ -18,7 +18,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 export const actions: Actions = {
 	follow: async ({ locals, params }) => {
 		const session = await locals.auth.validate();
-		if (!session) throw redirect(302, '../?/logout');
+		if (!session) throw redirect(302, '/login');
 
 		const profile_user = await getUserById(params?.profileId as string);
 

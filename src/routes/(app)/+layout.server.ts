@@ -5,7 +5,7 @@ import { getUsers } from '$lib/server/models/user.server';
 
 export const load: LayoutServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
-	if (!session) throw redirect(302, '?/logout');
+	if (!session) throw redirect(302, '/login');
 
 	const users = await getUsers();
 

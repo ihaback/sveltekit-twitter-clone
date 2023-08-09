@@ -7,7 +7,7 @@ import { getFollowers } from '$lib/server/models/follow.server';
 
 export const load: LayoutServerLoad = async ({ locals, params }) => {
 	const session = await locals.auth.validate();
-	if (!session) throw redirect(302, '../?/logout');
+	if (!session) throw redirect(302, '/login');
 
 	const tweets = await getTweetListItems({ user_ids: [params.profileId] });
 
