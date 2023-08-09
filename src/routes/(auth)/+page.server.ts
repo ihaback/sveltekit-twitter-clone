@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 
 import type { PageServerLoad, Actions } from './$types';
-import { logout } from '$lib/actions';
+import { logout } from '$lib/server/actions';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
