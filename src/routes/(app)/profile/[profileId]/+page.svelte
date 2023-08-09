@@ -11,7 +11,12 @@
 
 <AppShell user_id={data?.user_id}>
 	<div slot="main" class="-mt-6">
-		<ProfileForm profile_user={data?.profile_user} is_following={data.is_following} {form} />
+		<ProfileForm
+			profile_user={data?.profile_user}
+			user_id={data.user_id}
+			is_following={data.is_following}
+			{form}
+		/>
 		<TweetList tweets={data?.tweets ?? []} is_profile />
 	</div>
 	<svelte:fragment slot="outlet"><NoTweet /></svelte:fragment>

@@ -3,6 +3,7 @@
 	import type { User } from '@prisma/client';
 
 	export let profile_user: User | null;
+	export let user_id: string;
 	export let is_following: boolean;
 	export let form: { message?: string; tweetErrorMessage?: string } | null;
 
@@ -16,25 +17,27 @@
 		src={profile_user?.image_url}
 		alt=""
 	/>
-	<form
-		method="post"
-		action="?/follow"
-		use:enhance={() => {
-			loading = true;
-			return async ({ update }) => {
-				await update();
-				loading = false;
-			};
-		}}
-	>
-		<button
-			class="relative top-9 rounded-full border border-gray-300 px-4 py-1.5 font-bold transition duration-150 ease-in-out hover:text-gray-400 disabled:text-gray-400"
-			type="submit"
-			disabled={loading}
+	{#if profile_user?.id !== user_id}
+		<form
+			method="post"
+			action="?/follow"
+			use:enhance={() => {
+				loading = true;
+				return async ({ update }) => {
+					await update();
+					loading = false;
+				};
+			}}
 		>
-			{is_following ? 'Unfollow' : 'Follow'}
-		</button>
-	</form>
+			<button
+				class="relative top-9 rounded-full border border-gray-300 px-4 py-1.5 font-bold transition duration-150 ease-in-out hover:text-gray-400 disabled:text-gray-400"
+				type="submit"
+				disabled={loading}
+			>
+				{is_following ? 'Unfollow' : 'Follow'}
+			</button>
+		</form>
+	{/if}
 </div>
 {#if form?.message}
 	<div class="relative top-4 right-3">
