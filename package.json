@@ -20,6 +20,7 @@
 		"@lucia-auth/adapter-prisma": "^3.0.0",
 		"@lucia-auth/adapter-sqlite": "latest",
 		"@prisma/client": "^5.1.1",
+		"@types/better-sqlite3": "^7.6.4",
 		"lucia": "latest"
 	},
 	"devDependencies": {
