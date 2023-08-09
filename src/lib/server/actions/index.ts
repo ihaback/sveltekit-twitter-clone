@@ -63,6 +63,10 @@ export async function remove({
 		});
 	}
 
+	if (params?.profileId && params.tweetId) {
+		throw redirect(302, `/profile/${params.profileId}`);
+	}
+
 	throw redirect(302, '/tweets');
 }
 
