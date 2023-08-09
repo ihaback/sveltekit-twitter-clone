@@ -6,5 +6,9 @@
 	export let data: LayoutData;
 </script>
 
+<svelte:head>
+	<title>app</title>
+</svelte:head>
+
 <Header username={data.username} />
 <slot />
