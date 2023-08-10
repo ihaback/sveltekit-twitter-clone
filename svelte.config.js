@@ -16,7 +16,14 @@ const config = {
 			directives: {
 				'script-src': ['self'],
 				'img-src': ['self', 'avatars.githubusercontent.com', 'cloudflare-ipfs.com'],
-				'form-action': ['self']
+				'form-action': ['self'],
+				'frame-src': ['self'],
+				'connect-src': ['self'],
+				'font-src': ['self'],
+				'frame-ancestors': ['self'],
+				'child-src': ['self'],
+				'base-uri': ['self'],
+				'object-src': ['self'],
 			}
 		}
 	}
