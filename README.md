@@ -11,7 +11,6 @@ Barebones Twitter clone built with the [Sveltekit](https://kit.svelte.dev), [Luc
 - Read, Create, Delete Tweets
 - Personal feed based on who you follow
 - Browser user to Follow
-- Access articles by ID
 
 <h2><a id="table-of-contents">📚 Table of Contents</a></h2>
 
