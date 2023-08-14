@@ -16,6 +16,7 @@ Barebones Twitter clone built with the [Sveltekit](https://kit.svelte.dev), [Luc
 
 - [Development](#development)
   - [Installation](#installation)
+  - [Rename env.example](#rename-env)
   - [Set up the database](#set-up-the-database)
   - [Running the app](#running-the-app)
   - [Test user](#test-user)
@@ -26,6 +27,12 @@ Barebones Twitter clone built with the [Sveltekit](https://kit.svelte.dev), [Luc
 
 ```bash
 npm install
+```
+
+<h3><a id="rename-env">🗒️Rename env.example to .env</a></h3>
+
+```
+DATABASE_URL="file:./data.db?connection_limit=1"
 ```
 
 <h3><a id="set-up-the-database">🗄️ Set up the database</a></h3>
