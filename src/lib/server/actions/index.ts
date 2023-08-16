@@ -17,6 +17,12 @@ export async function create({ request, locals }: { request: Request; locals: Ap
 		});
 	}
 
+	if (body.length < 10) {
+		return fail(400, {
+			message: 'To short tweet'
+		});
+	}
+
 	try {
 		await createTweet({ body, user_id: session.user.userId });
 	} catch (error) {

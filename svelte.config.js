@@ -23,7 +23,7 @@ const config = {
 				'frame-ancestors': ['self'],
 				'child-src': ['self'],
 				'base-uri': ['self'],
-				'object-src': ['self'],
+				'object-src': ['self']
 			}
 		}
 	}
