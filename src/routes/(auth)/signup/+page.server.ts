@@ -1,6 +1,6 @@
 import { auth } from '$lib/server/lucia';
 import { fail, redirect } from '@sveltejs/kit';
-import { SqliteError } from 'better-sqlite3';
+import { Prisma } from '@prisma/client';
 
 import type { PageServerLoad, Actions } from './$types';
 
@@ -44,7 +44,7 @@ export const actions: Actions = {
 			locals.auth.setSession(session); // set session cookie
 		} catch (e) {
 			// check for unique constraint error in user table
-			if (e instanceof SqliteError && e.code === 'SQLITE_CONSTRAINT_UNIQUE') {
+			if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === 'P2002') {
 				return fail(400, {
 					message: 'Username already taken'
 				});
