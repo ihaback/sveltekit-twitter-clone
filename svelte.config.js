@@ -15,7 +15,7 @@ const config = {
 		csp: {
 			directives: {
 				'script-src': ['self'],
-				'img-src': ['self', 'avatars.githubusercontent.com', 'cloudflare-ipfs.com'],
+				'img-src': ['self', 'avatars.githubusercontent.com', 'cloudflare-ipfs.com', 'ipfs.io'],
 				'form-action': ['self'],
 				'frame-src': ['self'],
 				'connect-src': ['self'],
