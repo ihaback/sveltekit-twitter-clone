@@ -50,12 +50,22 @@
 					/>
 				</div>
 			</div>
-			<button
-				type="submit"
-				class="w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400 disabled:bg-blue-200"
-				disabled={loading}
-				>Log in
-			</button>
+			{#if type === 'login'}
+				<button
+					type="submit"
+					class="w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400 disabled:bg-blue-200"
+					disabled={loading}
+					>Log in
+				</button>
+			{/if}
+			{#if type === 'signup'}
+				<button
+					type="submit"
+					class="w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400 disabled:bg-blue-200"
+					disabled={loading}
+					>Sign up
+				</button>
+			{/if}
 			{#if type === 'login'}
 				<div class="flex items-center justify-end">
 					<div class="text-center text-sm text-gray-500">
