@@ -30,7 +30,7 @@ async function seed() {
 		}
 	});
 
-	Array.from({ length: 10 }).map(async (_, i) => {
+	Array.from({ length: 10 }).map(async () => {
 		const username = await faker.internet.userName();
 		const password = 'password';
 		const image_url = await faker.image.avatar();
